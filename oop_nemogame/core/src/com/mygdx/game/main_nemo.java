@@ -16,13 +16,12 @@ public class main_nemo extends ApplicationAdapter {
 	public void create () {
 		
 		gsm = new GameStateManager();
-		gsm.setState(GameStateManager.MENU);
+		gsm.setState(GameStateManager.PLAY);
 		
 	}
 
 	@Override
 	public void render () {
-		
 		
 		
 		gsm.render();
