@@ -8,6 +8,7 @@ import com.badlogic.gdx.graphics.GL20;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 
+import Character.BigFish;
 import GameManager.GameState;
 import GameManager.GameStateManager;
 
@@ -15,6 +16,8 @@ public class PlayState extends GameState {
 
 	public static final int WIDTH = 840;
 	public static final int HEIGHT= 600;
+	
+	BigFish fish1;
 	
 	Random rand = new Random (); //อันนี้เอาไว้randomค่าตัวเลข
 	
@@ -50,6 +53,7 @@ public class PlayState extends GameState {
 		x4 = rand.nextInt(840);
 		y4 = rand.nextInt(300);
 		
+		fish1 = new BigFish(300, 300);
 		
 		batch = new SpriteBatch();
 		//set รูปภาพ
@@ -63,21 +67,24 @@ public class PlayState extends GameState {
 	@Override
 	public void render() {
 		System.out.println("PLAY");
+		
 Gdx.gl.glClearColor(0, 1, 0, 1);//อันนี้ทำให้พื้นหลังเป็นสีเขียว
 		
 		Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT);
 		
 		batch.begin();
 		
+		fish1.draw(batch);
+		fish1.update();
 		//set text และ set ตำแหน่ง
 		//font.draw(batch, "Hello World", 300, 300);
 		
 		//สั่งให้batch ทำการวาดภาพที่ตำแหน่ง (ตำแปรรูป, ตำแหน่งแกน x, ตำแหน่งแกน y, width, height)
 		batch.draw(img, x1, y1, 100, 100);//อันนี้คือสร้างเรือ
 		
-		batch.draw(img2, x2, y2, 100, 100);//อันนี้คือปลาตัวแรก
-		batch.draw(img3, x3, y3, 100, 100);//ตัวสอง
-		batch.draw(img4, x4, y4, 100, 100);//ตัวสาม
+//		batch.draw(img2, x2, y2, 100, 100);//อันนี้คือปลาตัวแรก
+//		batch.draw(img3, x3, y3, 100, 100);//ตัวสอง
+//		batch.draw(img4, x4, y4, 100, 100);//ตัวสาม
 		batch.end();
 		//อันนี้ทำให้ปลาขยับ ลองปรับเลขข้างหน้าดู
 		x2 += 300 * Gdx.graphics.getDeltaTime();
@@ -105,17 +112,8 @@ Gdx.gl.glClearColor(0, 1, 0, 1);//อันนี้ทำให้พื้น�
 //        }
 		
 		//อันนี้คือเวลา x มันหลุดขอบ ก็ให้มันมาเริ่มที่ 750 ใหม่
-		if (x1 > 750) {
-			x1 = 750;
-		}
-		if (x2 > 850) {
-			x2 = -100;
-		}
-		if (x3 > 850) {
-			x3 = -100;
-		}
-		if (x4 > 850) {
-			x4 = -100;
+		if (x1 > 1200) {
+			x1 = 1200;
 		}
 		//อันนี้คือเวลา x มันหลุดขอบ ก็ให้มันมาเริ่มที่ 0 ใหม่
 		if (x1 < 0) {
