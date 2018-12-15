@@ -9,9 +9,9 @@ public class DesktopLauncher {
 		LwjglApplicationConfiguration config = new LwjglApplicationConfiguration();
 		new LwjglApplication(new main_nemo(), config);
 		
-		config.width = 500;
-		config.height = 500;
+		config.width = 1280;
+		config.height = 720;
 		config.title = "Nemo";
-		
+		config.resizable = false;
 	}
 }
